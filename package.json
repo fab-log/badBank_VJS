@@ -1,0 +1,15 @@
+{
+  "dependencies": {
+    "express": "^4.19.2"
+  },
+  "scripts": {
+    "start": "node server.js"
+  },
+  "name": "badbank_vjs",
+  "version": "1.0.0",
+  "description": "banking application",
+  "main": "server.js",
+  "devDependencies": {},
+  "author": "Fabian Ruin",
+  "license": "MIT"
+}
