@@ -86,7 +86,7 @@ let quicklog = (info, user) => {
 	}
 	if (user.transactions.length > 0) {
 		let mode;
-		user.transactions.at(-1) === 1 ? mode = "deposit" : mode = "withdraw";
+		user.transactions.at(-1)[1] === 1 ? mode = "deposit" : mode = "withdraw";
 		item.last_transaction = {
 			date: dateToString(user.transactions.at(-1)[0]),
 			mode,
@@ -117,7 +117,7 @@ const createAccount = async (event) => {
 	}
 
 	let accountData = {
-		id: `user_${Date.now()}_${randomCyphers()}`, // Math.floor(Math.random() * 1000).toString().padStart(4, "0")
+		id: `user_${Date.now()}_${randomCyphers()}`,
 		name,
 		email,
 		password,
