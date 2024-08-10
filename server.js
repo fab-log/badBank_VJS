@@ -27,8 +27,15 @@ app.post('/api.createAccount', (req, res) => {
       res.json({ status: "Email already exists." });
       return;
     }
-
-    parsedUserData.push(data);
+    let newUser = {
+      id: data.id,
+      name: data.name,
+      email: data.email,
+      admin: false,
+      balance: 0,
+      transactions: []
+    }
+    parsedUserData.push(newUser);
     let userDataString = JSON.stringify(parsedUserData);
     fs.writeFile("./userData.json", userDataString, (err) => {
       if (err) throw err;
@@ -36,6 +43,19 @@ app.post('/api.createAccount', (req, res) => {
       res.json(parsedUserData.at(-1));
     });
   });
+  fs.readFile("./credentials.json", "utf8", (err, credentials) => {
+    if (err) throw err;
+    let parsedCredentials = JSON.parse(credentials);
+    let newUserCredentials = {
+      id: data.id,
+      password: data.password
+    };
+    parsedCredentials.push(newUserCredentials);
+    let credentialsString = JSON.stringify(parsedCredentials);
+    fs.writeFile("./credentials.json", credentialsString, (err) => {
+      if (err) throw err;
+    })
+  })
 });
 
 app.post('/api.logIn', (req, res) => {
@@ -48,19 +68,32 @@ app.post('/api.logIn', (req, res) => {
       emails.push(e.email);
     });
     let index = emails.indexOf(data.email);
-    if (index === -1) {
-      let response = { status: "Email does not exist." };
-      res.json(response);
-    } else if (parsedUserData[index].email === data.email && parsedUserData[index].password === data.password) {
-      let response = {
-        status: "OK",
-        content: parsedUserData[index]
+
+    fs.readFile("./credentials.json", "utf8", (err, credentials) => {
+      if (err) throw err;
+      let parsedCredentials = JSON.parse(credentials);
+      let ids = [];
+      parsedCredentials.forEach(e => {
+        ids.push(e.id);
+      });
+      let index2 = ids.indexOf(parsedUserData[index].id);
+      console.log(parsedCredentials);
+      console.log(ids);
+      console.log(index2);
+      if (index === -1) {
+        let response = { status: "Email does not exist." };
+        res.json(response);
+      } else if (parsedUserData[index].email === data.email && parsedCredentials[index2].password === data.password) {
+        let response = {
+          status: "OK",
+          content: parsedUserData[index]
+        }
+        res.json(response);
+      } else if (parsedUserData[index].email === data.email && parsedCredentials[index2] != data.password) {
+        let response = { status: "Password incorrect." };
+        res.json(response);
       }
-      res.json(response);
-    } else if (parsedUserData[index].email === data.email && parsedUserData[index].password != data.password) {
-      let response = { status: "Password incorrect." };
-      res.json(response);
-    }
+    });
   });
 });
 
