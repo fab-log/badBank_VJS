@@ -32,6 +32,7 @@ res.json(parsedUserData.at(-1)); // representing the new user's data set
 In case of an error the server alternatively sends back a response object containing only the status  
 `{ status: "Email already exists." }`
 
+___
 
 ### LOG IN (api.logIn)  
 
@@ -64,6 +65,7 @@ let response = {
 In case of an error the server alternatively sends back a response object containing only the status with either  
 `{ status: "Email does not exist." }` or `{ status: "Password incorrect." }`  
 
+___
 
 ### TRANSACTION (api.transaction)  
 
@@ -99,6 +101,7 @@ In case of an error the server alternatively sends back a response object contai
 `{ status: "Email does not exist." }` or  
 ```{ status: `Amount exceeds balance. <br>Maximum possible withdrawal: $ ${parsedUserData[index].balance.toFixed(2)}` }```  
 
+___
 
 ### CHANGE ADMIN (api.changeAdmin)  
 
@@ -126,6 +129,7 @@ let response = {
       res.json(response);
 ```
 
+___
 
 ## Additional features
 
