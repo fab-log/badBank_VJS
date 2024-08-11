@@ -24,6 +24,7 @@ const randomCyphers = () => {
 
 app.post('/api.createAccount', (req, res) => {
   const data = req.body;
+  let newId = `user_${Date.now()}_${randomCyphers()}`;
   fs.readFile("./userData.json", "utf8", (err, userData) => {
     if (err) throw err;
     let parsedUserData = JSON.parse(userData);
@@ -36,7 +37,7 @@ app.post('/api.createAccount', (req, res) => {
       return;
     }
     let newUser = {
-      id: `user_${Date.now()}_${randomCyphers()}`,
+      id: newId,
       name: data.name,
       email: data.email,
       admin: false,
@@ -54,11 +55,13 @@ app.post('/api.createAccount', (req, res) => {
     if (err) throw err;
     let parsedCredentials = JSON.parse(credentials);
     let newUserCredentials = {
-      id: data.id,
+      id: newId,
       password: data.password
     };
+    console.log( {newUserCredentials} );
     parsedCredentials.push(newUserCredentials);
     let credentialsString = JSON.stringify(parsedCredentials);
+    console.log( {credentialsString} );
     fs.writeFile("./credentials.json", credentialsString, (err) => {
       if (err) throw err;
     })
