@@ -144,6 +144,7 @@ const createAccount = async (event) => {
 
 	tileContent.innerHTML = `
 		<h4>Success!</h4>
+		<h4>Hello ${loggedInUser.name}</h4>
 		<p>You are now logged in as ${loggedInUser.email}</p>
 		<hr class="yellow">
 		<button type="submit" onclick="showCreateAccount()">Create another account</button>
@@ -189,6 +190,7 @@ const logIn = async (event) => {
 		let suffix = "";
 		if (loggedInUser.admin === true) { suffix = ` <span class="small">(admin)</small>` }
 		tileInfo.innerHTML = `
+			<h4>Hello ${loggedInUser.name}</h4>
 			<p>You are logged in as <b>${loggedInUser.email}</b>${suffix}</p>
 			<p>Your current balance: <b>$ ${loggedInUser.balance.toFixed(2).toLocaleString()}</b></p>
 			<hr>
@@ -249,6 +251,7 @@ const transaction = async (event, mode) => {
 		loggedInUser = data.content;
 		quicklog("User data after transaction completed: ", loggedInUser);
 		tileInfo.innerHTML = `
+			<h4>Hello ${loggedInUser.name}</h4>
 			<p>You are logged in as <b>${loggedInUser.email}</b></p>
 			<p>Your current balance: <b>$ ${loggedInUser.balance.toFixed(2).toLocaleString()}</b></p>
 			<hr>
@@ -270,6 +273,7 @@ const transaction = async (event, mode) => {
 		user = data.content;
 		quicklog("User data after transaction completed: ", user);
 		tileInfo.innerHTML = `
+			<h4>Hello ${loggedInUser.name}</h4>
 			<p>You are logged in as <b>${loggedInUser.email}</b></p>
 			<p>Your current balance: <b>$ ${loggedInUser.balance.toFixed(2).toLocaleString()}</b></p>
 			<hr>
@@ -318,6 +322,7 @@ const showHome = () => {
 		let suffix = "";
 		if (loggedInUser.admin === true) { suffix = ` <span class="small">(admin)</small>` }
 		tileInfo.innerHTML = `
+			<h4>Hello ${loggedInUser.name}</h4>
 			<p>You are logged in as <b>${loggedInUser.email}</b>${suffix}</p>
 			<p>Your current balance: <b>$ ${loggedInUser.balance.toFixed(2).toLocaleString()}</b></p>
 			<hr>
@@ -393,6 +398,7 @@ const showDeposit = () => {
 	let suffix = "";
 	if (loggedInUser.admin === true) { suffix = ` <span class="small">(admin)</small>` }
 	tileInfo.innerHTML = `
+		<h4>Hello ${loggedInUser.name}</h4>
 		<p>You are logged in as <b>${loggedInUser.email}</b>${suffix}</p>
 		<p>Your current balance: <b>$ ${loggedInUser.balance.toFixed(2).toLocaleString()}</b></p>
 		<hr>
@@ -427,6 +433,7 @@ const showWithdraw = () => {
 	let suffix = "";
 	if (loggedInUser.admin === true) { suffix = ` <span class="small">(admin)</small>` }
 	tileInfo.innerHTML = `
+		<h4>Hello ${loggedInUser.name}</h4>
 		<p>You are logged in as <b>${loggedInUser.email}</b>${suffix}</p>
 		<p>Your current balance: <b>$ ${loggedInUser.balance.toFixed(2).toLocaleString()}</b></p>
 		<hr>
@@ -460,6 +467,7 @@ const showTransactions = async () => {
 	`;
 	if (loggedInUser.admin === false) {
 		tileInfo.innerHTML = `
+			<h4>Hello ${loggedInUser.name}</h4>
 			<p>You are logged in as <b>${loggedInUser.email}</b></p>
 			<p>Your current balance: <b>$ ${loggedInUser.balance.toFixed(2).toLocaleString()}</b></p>
 			<hr>
