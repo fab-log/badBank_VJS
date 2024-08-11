@@ -1,7 +1,20 @@
 # badBank
 ## The bad bank capstone project from the MIT xPRO full stack developper course
 
-## API documentation
+## API documentation  
+
+### GET ALL DATA (api.getAllData)  
+
+**Client request**  
+
+```const response = await fetch("/api.getAllData");```
+
+**Server response**  
+
+```res.send(userData);```
+
+___
+
 
 ### CREATE ACCOUNT (api.createAccount)  
 
