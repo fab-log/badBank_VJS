@@ -1,5 +1,5 @@
 # badBank
-## The bad bank capstone project from the MIT xPRO full stack developper course
+## The bad bank capstone project from the MIT xPRO full stack developer course
 
 ## API documentation  
 
