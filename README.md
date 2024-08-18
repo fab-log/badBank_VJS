@@ -1,6 +1,31 @@
 # badBank
 ## The bad bank capstone project from the MIT xPRO full stack developer course
 
+This app simulates the basic functionality of a banking app.
+- User management including creating new accunts as well as logging in for users who already have an account
+- Deposits and withdrawals while always keeping track of your account balance
+- Transaction history for every account
+- Admin accounts with extra features (making transfers for other users, access every user's data, changing other users' admin status)
+
+All actions are stored in a data base and are persistent. In addition to that you can switch to a light mode if preferred.
+
+___
+
+
+## Installation
+
+In order to run this app simply follow these steps
+1. Clone or copy the code provided here and store it to a directory on your device
+2. In case you don't already have, install ***npm*** and ***node*** ( [instructions can be found here](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm) )
+3. Open up a terminal, navigate to the directory you previously chose and run `npm i` to install the required dependencies (in this case ***express***)
+4. Remaining in that same directory run `node server.js` to start the server
+5. Open a browser application and call `localhost:8080/` to start the banking app
+
+Enjoy!
+
+___
+
+
 ## API documentation  
 
 ### GET ALL DATA (api.getAllData)  
